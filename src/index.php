@@ -1,13 +1,16 @@
 <?php
 
 require_once 'model.php';
+require_once 'controllers.php';
 
-$posts = get_all_posts();
+// route the request internally
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-require 'templates/list.php';
-
-/**
- * Now, the sole task of the controller is to get data from the model layer of the application
- * (the model) and to call a template to render that data. This is a very simple example
- * of the model-view-controller pattern.
- */
+if ('/index.php' == $uri || '/' == $uri) {
+    list_action();
+} elseif (('/index.php/show' == $uri || '/show' == $uri) && isset($_GET['id'])) {
+    show_action($_GET['id']);
+}else{
+    header('Status: 404 Not Found');
+    echo '<html><body><h1>Page Not Found</h1></body></html>';
+}
