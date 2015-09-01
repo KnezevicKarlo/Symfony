@@ -35,3 +35,14 @@ $result = mysqli_query($link, 'SELECT id, title from post');
 mysqli_close($link);
 
 ?>
+
+/**
+
+• No error-checking: What if the connection to the database fails?
+• Poor organization: If the application grows, this single file will become increasingly
+unmaintainable. Where should you put code to handle a form submission? How can you
+validate data? Where should code go for sending emails?
+• Difficult to reuse code: Since everything is in one file, there's no way to reuse any part of the
+application for other "pages" of the blog.
+
+*/
