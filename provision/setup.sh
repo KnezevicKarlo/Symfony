@@ -28,6 +28,11 @@ apt-get install debconf-utils -y > /dev/null
 debconf-set-selections <<< "mysql-server mysql-server/root_password password 1234"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password 1234"
 
+#Composer
+echo "Preparing Composer"
+sudo curl -sS https://getcomposer.org/installer | sudo php
+sudo mv composer.phar /usr/local/bin/composer
+
 echo "Installing MySQL"
 apt-get install mysql-server -y > /dev/null
 
